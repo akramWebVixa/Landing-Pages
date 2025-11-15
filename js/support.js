@@ -27,7 +27,7 @@ async function loadPage(page) {
   const container = document.querySelector("main");
   if (container) {
     try {
-      const response = await fetch(`/pages/${page}.html`);
+      const response = await fetch(`pages/${page}.html`);
       if (!response.ok) throw new Error(`Failed to load page: ${page}`);
       const html = await response.text();
       container.innerHTML = html;

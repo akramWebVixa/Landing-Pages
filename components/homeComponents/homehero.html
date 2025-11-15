@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dental Clinic - Get a Confident New Smile</title>
+<link rel="stylesheet" href="/styles/homeHero.css">
+</head>
+<body>
+    <section class="hero" aria-label="Hero - Book a free consultation">
+        <div class="hero-inner">
+            
+            <div class="hero-content">
+                <h1 style="color: azure;">Get a confident new smile — Invisalign & Dental Implants</h1>
+                <p class="lead" style="color: azure;">Expert clinicians, digital smile design and tailored treatment plans. Choose clear aligners for fast cosmetic results or dental implants for restored function and confidence.</p>
+
+                <div class="feature-row" aria-label="Clinic highlights">
+                    <div class="feature">
+                        <div class="icon">25+</div>
+                        <div class="text">Years Experience</div>
+                    </div>
+                    <div class="feature">
+                        <div class="icon">99%</div>
+                        <div class="text">Success Rate</div>
+                    </div>
+                    <div class="feature">
+                        <div class="icon">£</div>
+                        <div class="text">Flexible Finance</div>
+                    </div>
+                    <div class="feature">
+                        <div class="icon">😌</div>
+                        <div class="text">Sedation Available</div>
+                    </div>
+                </div>
+            </div>
+
+            <aside class="hero-form">
+                <div class="form" aria-labelledby="book-title" style="color: azure;">
+                    <h3 id="book-title">Book Your FREE Consultation</h3>
+                    <form id="consultation-form">
+                        <div class="field">
+                            <label for="firstname">First Name</label>
+                            <input id="firstname" name="firstname" type="text" placeholder="Your first name" required>
+                        </div>
+                        <div class="field">
+                            <label for="lastname">Last Name</label>
+                            <input id="lastname" name="lastname" type="text" placeholder="Your last name" required>
+                        </div>
+                        <div class="field">
+                            <label for="phone">Phone Number</label>
+                            <input id="phone" name="phone" type="tel" placeholder="Phone number" required>
+                        </div>
+                        <div class="field">
+                            <label for="email">Email Address</label>
+                            <input id="email" name="email" type="email" placeholder="you@example.com" required>
+                        </div>
+                        <div class="cta">
+                            <button class="btn" type="submit">BOOK FREE CONSULTATION</button>
+                        </div>
+                    </form>
+                    <div class="success-message" id="success-message">
+                        <h3>Thank You!</h3>
+                        <p>We've received your information and will contact you shortly to schedule your free consultation.</p>
+                    </div>
+                </div>
+            </aside>
+        </div>
+    </section>
+
+    <script>
+        document.getElementById('consultation-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get form data
+            const formData = new FormData(this);
+            const data = Object.fromEntries(formData);
+            
+            // In a real application, you would send this data to your server
+            console.log('Form submitted:', data);
+            
+            // Show success message
+            document.getElementById('success-message').style.display = 'block';
+            
+            // Reset form
+            this.reset();
+            
+            // Scroll to success message
+            document.getElementById('success-message').scrollIntoView({ 
+                behavior: 'smooth',
+                block: 'center'
+            });
+        });
+    </script>
+</body>
+</html>

@@ -18,9 +18,9 @@ async function loadComponent(selector, url) {
 }
 
 async function loadHomeComponents() {
-  await loadComponent("mapinfo", "/components/homeComponents/mapinfo.html");
-  await loadComponent("homehero", "/components/homeComponents/homehero.html");
-  await loadComponent("homeWhyUs", "/components/homeComponents/homeWhyUs.html");
+  await loadComponent("mapinfo", "components/homeComponents/mapinfo.html");
+  await loadComponent("homehero", "components/homeComponents/homehero.html");
+  await loadComponent("homeWhyUs", "components/homeComponents/homeWhyUs.html");
 }
 
 async function loadPage(page) {
@@ -135,8 +135,8 @@ document.addEventListener("DOMContentLoaded", async () => {
   }
 
   // load common components
-  await loadComponent("navbar", "/comman/navbar.html");
-  await loadComponent("footer", "/comman/footer.html");
+  await loadComponent("navbar", "comman/navbar.html");
+  await loadComponent("footer", "comman/footer.html");
 
   // default page
   const initialPage = location.hash.replace("#", "") || "home";

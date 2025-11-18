@@ -95,7 +95,7 @@
             font-family: 'Playfair Display', serif;
             font-size: 24px;
             font-weight: 600;
-            color: var(--accent);
+            color: #e9cfc3;
             position: relative;
             padding-bottom: 10px;
         }
@@ -107,7 +107,7 @@
             left: 0;
             width: 40px;
             height: 2px;
-            background: var(--accent);
+            background: #e9cfc3;
         }
 
         .footer-col h5 {

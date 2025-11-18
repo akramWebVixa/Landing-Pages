@@ -12,7 +12,87 @@
     <navbar></navbar>
     <main>
     </main>
-    <footer></footer>
+ <footer>
+        <div class="footer-decoration decoration-1"></div>
+        <div class="footer-decoration decoration-2"></div>
+
+        <div class="footer-inner">
+            <div class="footer-col">
+                <h4>NUVO • Banning Dental</h4>
+                <p class="muted" style="max-width:28ch">Invisalign and implant specialists. Exceptional care & digital planning for outstanding results.</p>
+                <p style="margin-top:12px;font-size:14px">Warwick • Canning Town • London</p>
+                
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+
+            <div class="footer-col">
+                <h5>Quick Links</h5>
+                <ul>
+                    <li><a href="#" class="footer-link" data-target="contact">Contact Us</a></li>
+                    <li><a href="#" class="footer-link" data-target="about">About Us</a></li>
+                    <li><a href="#" class="footer-link" data-target="services">Our Service</a></li>
+                    <li><a href="#" class="footer-link" data-target="testimonials">Testimonial</a></li>
+                    <!-- <li><a href="#" class="footer-link" data-target="visit">Visit Us</a></li> -->
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h2 id="visit">Visit us</h2>
+                <p>610 Finchley Road, NW11 7RX<br>Golders Green, London</p>
+                <p class="muted">Parking available · Northern Line 3‑min walk</p>
+               
+                <div style="margin-top: 20px;">
+                    <p class="muted"><i class="fas fa-phone"></i> 020 8455 1234</p>
+                    <p class="muted"><i class="fas fa-envelope"></i> info@banningdental.com</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2025 NUVO • Banning Dental. All rights reserved. | Privacy Policy | Terms of Service</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Footer link click handlers
+            const footerLinks = document.querySelectorAll('.footer-link');
+            footerLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const target = this.getAttribute('data-target');
+                    
+                    // Dispatch custom event for smooth scrolling
+                    const event = new CustomEvent('footerLinkClick', { 
+                        detail: { target: target } 
+                    });
+                    document.dispatchEvent(event);
+                });
+            });
+
+            const instaContainer = document.querySelector('.insta-container');
+            if (instaContainer) {
+                instaContainer.addEventListener('click', function() {
+                    alert('Follow us on Instagram!');
+                });
+            }
+            
+            const buttons = document.querySelectorAll('.btn');
+            buttons.forEach(button => {
+                button.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-3px)';
+                });
+                button.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(0)';
+                });
+            });
+        });
+    </script>
     
     <script src="assets/js/support.js"></script>
 </body>

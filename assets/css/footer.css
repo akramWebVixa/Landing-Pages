@@ -90,7 +90,7 @@
             flex: 1;
         }
 
-        .footer-col h4 {
+        .footerh4Heading{
             margin: 0 0 15px;
             font-family: 'Playfair Display', serif;
             font-size: 24px;
@@ -100,7 +100,7 @@
             padding-bottom: 10px;
         }
 
-        .footer-col h4::after {
+        .footerh4Heading::after {
             content: '';
             position: absolute;
             bottom: 0;
@@ -293,7 +293,7 @@
                 font-size: 18px;
             }
             
-            .footer-col h4 {
+            .footerh4Heading{
                 font-size: 22px;
             }
         }

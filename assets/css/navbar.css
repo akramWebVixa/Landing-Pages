@@ -61,12 +61,12 @@
     background: transparent;
     color: var(--primary);
     border: 2px solid var(--primary);
-    padding: 2px 2px;
+    padding: 8px 18px;
     border-radius: var(--radius);
     cursor: pointer;
     font-weight: 600;
     transition: var(--transition);
-    width: 150px;
+    width: 160px;
 }
 
 .btn-outline:hover {

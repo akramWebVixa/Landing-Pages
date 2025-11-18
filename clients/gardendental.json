@@ -1,0 +1,185 @@
+{
+  "homeHero": {
+    "title": "Get a confident new smile — Invisalign & Dental Implants",
+    "description": "Expert clinicians, digital smile design and tailored treatment plans. Choose clear aligners for fast cosmetic results or dental implants for restored function and confidence.",
+    "features": [
+      {
+        "icon": "25+",
+        "text": "Years Experience"
+      },
+      {
+        "icon": "99%",
+        "text": "Success Rate"
+      },
+      {
+        "icon": "£",
+        "text": "Flexible Finance"
+      },
+      {
+        "icon": "😌",
+        "text": "Sedation Available"
+      }
+    ],
+    "form": {
+      "title": "Book Your FREE Consultation",
+      "fields": [
+        {
+          "id": "firstname",
+          "label": "First Name",
+          "type": "text",
+          "placeholder": "Your first name",
+          "required": true
+        },
+        {
+          "id": "lastname",
+          "label": "Last Name",
+          "type": "text",
+          "placeholder": "Your last name",
+          "required": true
+        },
+        {
+          "id": "phone",
+          "label": "Phone Number",
+          "type": "tel",
+          "placeholder": "Phone number",
+          "required": true
+        },
+        {
+          "id": "email",
+          "label": "Email Address",
+          "type": "email",
+          "placeholder": "you@example.com",
+          "required": true
+        },
+        {
+          "id": "message",
+          "label": "Message",
+          "type": "textarea",
+          "placeholder": "Tell us about your dental concerns or questions...",
+          "required": false
+        }
+      ],
+      "buttonText": "BOOK FREE CONSULTATION",
+      "successMessage": {
+        "title": "Thank You!",
+        "message": "We've received your information and will contact you shortly to schedule your free consultation."
+      }
+    }
+  },
+  "homeWhyUs": {
+    "whyChooseUs": {
+      "image": "assets/images/img3.jpg",
+      "alt": "Modern dental clinic with professional team",
+      "title": "Why Choose Us?",
+      "description": "Top Invisalign providers in the region with experienced implant specialists — combining cosmetic & restorative dentistry for lasting results.",
+      "features": [
+        "Top 1% of Invisalign providers in Europe",
+        "Over 3,000 5-star reviews",
+        "Free whitening & retainers included with treatments",
+        "Price-match and flexible payment plans"
+      ],
+      "buttonText": "Book Free Consultation",
+      "buttonIcon": "fas fa-calendar-check"
+    },
+    "services": {
+      "title": "Services & Pricing",
+      "cards": [
+        {
+          "title": "Invisalign Express",
+          "description": "A fast, cosmetic solution for mild misalignment. Includes 3D scans & retainers.",
+          "price": "£1,890",
+          "details": "Duration: 3–8 months • Up to 7 aligners • Free 3D scan, retainers & whitening",
+          "buttonText": "Book Invisalign",
+          "buttonIcon": "fas fa-tooth"
+        },
+        {
+          "title": "Implants — Lite / Comprehensive",
+          "description": "Full teeth replacement and single-tooth implants using guided planning & premium materials.",
+          "price": "From £2,990",
+          "details": "Includes implants, abutments, final crowns & CBCT planning where required.",
+          "buttonText": "Book Implants",
+          "buttonIcon": "fas fa-teeth"
+        }
+      ]
+    },
+    "steps": [
+      {
+        "number": "1",
+        "title": "Consultation",
+        "description": "Comprehensive exam & bespoke smile design."
+      },
+      {
+        "number": "2",
+        "title": "Clincheck / Plan",
+        "description": "Digital smile design & surgery plan using scans and 3D models."
+      },
+      {
+        "number": "3",
+        "title": "Treatment",
+        "description": "Fitting of aligners or implant surgical placement and restoration."
+      }
+    ],
+    "gallery": {
+      "title": "Our Patients — Before & After",
+      "items": [
+        {
+          "before": "assets/images/img7a.webp",
+          "after": "assets/images/img7b.webp",
+          "description": "Invisalign — 6 months"
+        },
+        {
+          "before": "assets/images/img8a.webp",
+          "after": "assets/images/img8b.webp",
+          "description": "Implant retained denture"
+        },
+        {
+          "before": "assets/images/img9a.webp",
+          "after": "assets/images/img9b.webp",
+          "description": "Smile makeover"
+        }
+      ]
+    },
+    "testimonials": {
+      "title": "What Our Patients Say",
+      "reviews": [
+        {
+          "platform": "Google Review",
+          "stars": "★★★★★",
+          "text": "Amazing service and great results. The team explained everything and I felt comfortable throughout."
+        },
+        {
+          "platform": "Google Review", 
+          "stars": "★★★★★",
+          "text": "I had implants placed. Excellent care, quick recovery and the final crown looks natural."
+        },
+        {
+          "platform": "Google Review",
+          "stars": "★★★★★", 
+          "text": "Invisalign transformed my smile — highly recommended."
+        }
+      ]
+    },
+    "cta": {
+      "title": "Ready to Transform Your Smile?",
+      "description": "Book your free, no-obligation consultation today and take the first step towards the smile you've always wanted.",
+      "buttonText": "Book FREE Consultation",
+      "buttonIcon": "fas fa-calendar-alt"
+    }
+  },
+  "homeFindUs": {
+    "title": "Find Us",
+    "description": "Visit our modern dental clinic in Warwick for expert Invisalign and implant treatments. We're conveniently located with ample parking and easy access.",
+    "points": [
+      "✓ Free on-site parking available",
+      "✓ Wheelchair accessible facility", 
+      "✓ Late evening appointments",
+      "✓ Saturday consultations available"
+    ],
+    "buttonText": "Get Directions",
+    "buttonLink": "#",
+    "mapTitle": "Our Location",
+    "address": "123 Dental Street, Warwick, CV32 4AB",
+    "extraInfo": "Free parking available at the rear of the building",
+    "mapEmbedUrl": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2442.123456789012!2d-1.590000!3d52.280000!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x48774c7f8d1f87a5%3A0x123456789abcdef!2sWarwick!5e0!3m2!1sen!2suk!4v1234567890"
+  }
+}

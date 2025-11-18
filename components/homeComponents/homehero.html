@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dental Clinic - Get a Confident New Smile</title>
-<link rel="stylesheet" href="styles/homeHero.css">
+<link rel="stylesheet" href="assets/css/homeHero.css">
 </head>
 <body>
     <section class="hero" aria-label="Hero - Book a free consultation">
@@ -66,30 +66,78 @@
             </aside>
         </div>
     </section>
+  <script>
+        // Fetch and populate hero content
+        async function loadHeroContent() {
+            try {
+                const response = await fetch('/clients/gardendental.json');
+                const data = await response.json();
+                const heroData = data.homeHero;
+                
+                const heroInner = document.getElementById('hero-content');
+                heroInner.innerHTML = `
+                    <div class="hero-content">
+                        <h1 style="color: azure;">${heroData.title}</h1>
+                        <p class="lead" style="color: azure;">${heroData.description}</p>
 
-    <script>
-        document.getElementById('consultation-form').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            // Get form data
-            const formData = new FormData(this);
-            const data = Object.fromEntries(formData);
-            
-            // In a real application, you would send this data to your server
-            console.log('Form submitted:', data);
-            
-            // Show success message
-            document.getElementById('success-message').style.display = 'block';
-            
-            // Reset form
-            this.reset();
-            
-            // Scroll to success message
-            document.getElementById('success-message').scrollIntoView({ 
-                behavior: 'smooth',
-                block: 'center'
-            });
-        });
+                        <div class="feature-row" aria-label="Clinic highlights">
+                            ${heroData.features.map(feature => `
+                                <div class="feature">
+                                    <div class="icon">${feature.icon}</div>
+                                    <div class="text">${feature.text}</div>
+                                </div>
+                            `).join('')}
+                        </div>
+                    </div>
+
+                    <aside class="hero-form">
+                        <div class="form" aria-labelledby="book-title" style="color: azure;">
+                            <h3 id="book-title">${heroData.form.title}</h3>
+                            <form id="consultation-form">
+                                ${heroData.form.fields.map(field => `
+                                    <div class="field">
+                                        <label for="${field.id}">${field.label}</label>
+                                        <input id="${field.id}" name="${field.id}" type="${field.type}" placeholder="${field.placeholder}" ${field.required ? 'required' : ''}>
+                                    </div>
+                                `).join('')}
+                                <div class="cta">
+                                    <button class="btn" type="submit">${heroData.form.buttonText}</button>
+                                </div>
+                            </form>
+                            <div class="success-message" id="success-message" style="display: none;">
+                                <h3>${heroData.form.successMessage.title}</h3>
+                                <p>${heroData.form.successMessage.message}</p>
+                            </div>
+                        </div>
+                    </aside>
+                `;
+
+                // Add form submission handler
+                document.getElementById('consultation-form').addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    
+                    const formData = new FormData(this);
+                    const data = Object.fromEntries(formData);
+                    
+                    console.log('Form submitted:', data);
+                    
+                    document.getElementById('success-message').style.display = 'block';
+                    this.reset();
+                    
+                    document.getElementById('success-message').scrollIntoView({ 
+                        behavior: 'smooth',
+                        block: 'center'
+                    });
+                });
+
+            } catch (error) {
+                console.error('Error loading hero content:', error);
+            }
+        }
+
+        // Load content when page loads
+        document.addEventListener('DOMContentLoaded', loadHeroContent);
     </script>
+ 
 </body>
 </html>

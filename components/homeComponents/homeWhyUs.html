@@ -5,131 +5,187 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Premium Dental Services | Warwick Dentists</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-     <link rel="stylesheet" href="styles/homewhyUs.css">
-
+    <link rel="stylesheet" href="assets/css/homewhyUs.css">
 </head>
 <body>
-    <div class="container">
-        <!-- Why Choose Us Section -->
-        <div class="why" role="region" aria-label="Why choose us">
-            <div>
-                <img src="assets/img3.jpg" alt="Modern dental clinic with professional team">
-            </div>
-            <div>
-                <h2>Why Choose Us?</h2>
-                <p class="muted">Top Invisalign providers in the region with experienced implant specialists — combining cosmetic & restorative dentistry for lasting results.</p>
-                <ul>
-                    <li>Top 1% of Invisalign providers in Europe</li>
-                    <li>Over 3,000 5-star reviews</li>
-                    <li>Free whitening & retainers included with treatments</li>
-                    <li>Price-match and flexible payment plans</li>
-                </ul>
-                <div style="margin-top: 20px">
-                    <button class="btn"><i class="fas fa-calendar-check"></i> Book Free Consultation</button>
-                </div>
-            </div>
-        </div>
-
-        <!-- SERVICES / PRICING CARDS -->
-        <h3 class="section-title">Services & Pricing</h3>
-        <div class="cards">
-            <article class="card" aria-labelledby="service-invis">
-                <h4 id="service-invis">Invisalign Express</h4>
-                <p class="muted">A fast, cosmetic solution for mild misalignment. Includes 3D scans & retainers.</p>
-                <div class="price">£1,890</div>
-                <div class="small-list">Duration: 3–8 months • Up to 7 aligners • Free 3D scan, retainers & whitening</div>
-                <div style="margin-top: 20px">
-                    <button class="btn"><i class="fas fa-tooth"></i> Book Invisalign</button>
-                </div>
-            </article>
-
-            <article class="card" aria-labelledby="service-impl">
-                <h4 id="service-impl">Implants — Lite / Comprehensive</h4>
-                <p class="muted">Full teeth replacement and single-tooth implants using guided planning & premium materials.</p>
-                <div class="price">From £2,990</div>
-                <div class="small-list">Includes implants, abutments, final crowns & CBCT planning where required.</div>
-                <div style="margin-top: 20px">
-                    <button class="btn"><i class="fas fa-teeth"></i> Book Implants</button>
-                </div>
-            </article>
-        </div>
-
-        <!-- 3 STEP ACTION -->
-        <div class="steps" aria-label="3 step action plan">
-            <div class="step">
-                <div class="step-number">1</div>
-                <h4>Consultation</h4>
-                <p class="muted">Comprehensive exam & bespoke smile design.</p>
-            </div>
-            <div class="step">
-                <div class="step-number">2</div>
-                <h4>Clincheck / Plan</h4>
-                <p class="muted">Digital smile design & surgery plan using scans and 3D models.</p>
-            </div>
-            <div class="step">
-                <div class="step-number">3</div>
-                <h4>Treatment</h4>
-                <p class="muted">Fitting of aligners or implant surgical placement and restoration.</p>
-            </div>
-        </div>
-
-        <!-- BEFORE / AFTER GALLERY -->
-        <h3 class="section-title">Our Patients — Before & After</h3>
-        <div class="gallery" role="list">
-            <div class="ba" role="listitem">
-                    <img src="assets/img7a.webp" alt="Before treatment">
-                    <img src="assets/img7b.webp" alt="After treatment">
-                <div class="muted" style="margin-top: 8px">Invisalign — 6 months</div>
-            </div>
-            <div class="ba" role="listitem">
-              
-                    <img src="assets/img8a.webp" alt="Before treatment">
-                    <img src="assets/img8b.webp" alt="After treatment">
-              
-                <div class="muted" style="margin-top: 8px">Implant retained denture</div>
-            </div>
-            <div class="ba" role="listitem">
-               
-                    <img src="assets/img9a.webp" alt="Before treatment">
-                    <img src="assets/img9b.webp" alt="After treatment">
-              
-                <div class="muted" style="margin-top: 8px">Smile makeover</div>
-            </div>
-        </div>
-
-        <!-- TESTIMONIALS -->
-        <h3 class="section-title">What Our Patients Say</h3>
-        <div class="testimonials" aria-live="polite">
-            <div class="review">
-                <h5><i class="fas fa-user-circle"></i> Google Review <span class="stars">★★★★★</span></h5>
-                <p class="muted">"Amazing service and great results. The team explained everything and I felt comfortable throughout."</p>
-            </div>
-            <div class="review">
-                <h5><i class="fas fa-user-circle"></i> Google Review <span class="stars">★★★★★</span></h5>
-                <p class="muted">"I had implants placed. Excellent care, quick recovery and the final crown looks natural."</p>
-            </div>
-            <div class="review">
-                <h5><i class="fas fa-user-circle"></i> Google Review <span class="stars">★★★★★</span></h5>
-                <p class="muted">"Invisalign transformed my smile — highly recommended."</p>
-            </div>
-        </div>
-
-        <!-- CTA -->
-        <div class="cta-section">
-            <h3>Ready to Transform Your Smile?</h3>
-            <p>Book your free, no-obligation consultation today and take the first step towards the smile you've always wanted.</p>
-            <button class="btn cta-btn"><i class="fas fa-calendar-alt"></i> Book FREE Consultation</button>
+    <div class="container" id="why-us-content">
+        <!-- Content will be populated by JavaScript -->
+        <div style="padding: 20px; text-align: center;">
+            <p>Loading content...</p>
         </div>
     </div>
-
     <script>
-        // Add subtle animations on scroll
-        document.addEventListener('DOMContentLoaded', function() {
+        // Fetch and populate why us content
+        async function loadWhyUsContent() {
+            try {
+                console.log('Starting to load JSON...');
+              const response = await fetch('/clients/gardendental.json')
+  .then(r => {
+    console.log("STATUS:", r.status);
+    return r.text();
+  })
+  .then(t => console.log("RAW:", t))
+  .catch(e => console.error("ERROR:", e));
+
+// or
+                
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                
+                const data = await response.json();
+                console.log('JSON loaded successfully:', data);
+                
+                const whyUsData = data.homeWhyUs;
+                
+                const container = document.getElementById('why-us-content');
+                container.innerHTML = `
+                    <!-- Why Choose Us Section -->
+                    <div class="why" role="region" aria-label="Why choose us">
+                        <div>
+                            <img src="${whyUsData.whyChooseUs.image}" alt="${whyUsData.whyChooseUs.alt}">
+                        </div>
+                        <div>
+                            <h2>${whyUsData.whyChooseUs.title}</h2>
+                            <p class="muted">${whyUsData.whyChooseUs.description}</p>
+                            <ul>
+                                ${whyUsData.whyChooseUs.features.map(feature => `
+                                    <li>${feature}</li>
+                                `).join('')}
+                            </ul>
+                            <div style="margin-top: 20px">
+                                <button class="btn"><i class="${whyUsData.whyChooseUs.buttonIcon}"></i> ${whyUsData.whyChooseUs.buttonText}</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- SERVICES / PRICING CARDS -->
+                    <h3 class="section-title">${whyUsData.services.title}</h3>
+                    <div class="cards">
+                        ${whyUsData.services.cards.map(card => `
+                            <article class="card" aria-labelledby="${card.id}">
+                                <h4 id="${card.id}">${card.title}</h4>
+                                <p class="muted">${card.description}</p>
+                                <div class="price">${card.price}</div>
+                                <div class="small-list">${card.details}</div>
+                                <div style="margin-top: 20px">
+                                    <button class="btn"><i class="${card.buttonIcon}"></i> ${card.buttonText}</button>
+                                </div>
+                            </article>
+                        `).join('')}
+                    </div>
+
+                    <!-- 3 STEP ACTION -->
+                    <div class="steps" aria-label="3 step action plan">
+                        ${whyUsData.steps.map(step => `
+                            <div class="step">
+                                <div class="step-number">${step.number}</div>
+                                <h4>${step.title}</h4>
+                                <p class="muted">${step.description}</p>
+                            </div>
+                        `).join('')}
+                    </div>
+
+                    <!-- BEFORE / AFTER GALLERY -->
+                    <h3 class="section-title">${whyUsData.gallery.title}</h3>
+                    <div class="gallery" role="list">
+                        ${whyUsData.gallery.items.map(item => `
+                            <div class="ba" role="listitem">
+                                <img src="${item.before}" alt="Before treatment">
+                                <img src="${item.after}" alt="After treatment">
+                                <div class="muted" style="margin-top: 8px">${item.description}</div>
+                            </div>
+                        `).join('')}
+                    </div>
+
+                    <!-- TESTIMONIALS -->
+                    <h3 class="section-title">${whyUsData.testimonials.title}</h3>
+                    <div class="testimonials" aria-live="polite">
+                        ${whyUsData.testimonials.reviews.map(review => `
+                            <div class="review">
+                                <h5><i class="fas fa-user-circle"></i> ${review.platform} <span class="stars">${review.stars}</span></h5>
+                                <p class="muted">"${review.text}"</p>
+                            </div>
+                        `).join('')}
+                    </div>
+
+                    <!-- CTA -->
+                    <div class="cta-section">
+                        <h3>${whyUsData.cta.title}</h3>
+                        <p>${whyUsData.cta.description}</p>
+                        <button class="btn cta-btn"><i class="${whyUsData.cta.buttonIcon}"></i> ${whyUsData.cta.buttonText}</button>
+                    </div>
+                `;
+
+                // Add interactive functionality
+                addInteractivity();
+
+            } catch (error) {
+                console.error('Error loading why us content:', error);
+                console.error('Error details:', error.message);
+                
+                // Fallback to static content if JSON fails
+                document.getElementById('why-us-content').innerHTML = `
+                    <div style="padding: 20px; text-align: center; background: #f8f9fa; border-radius: 8px; margin: 20px;">
+                        <h3>Content Loading Issue</h3>
+                        <p>Unable to load dynamic content. Error: ${error.message}</p>
+                        <p>Loading static content instead...</p>
+                    </div>
+                    <div class="why" role="region" aria-label="Why choose us">
+                        <div><img src="assets/img3.jpg" alt="Modern dental clinic with professional team"></div>
+                        <div>
+                            <h2>Why Choose Us?</h2>
+                            <p class="muted">Top Invisalign providers in the region with experienced implant specialists — combining cosmetic & restorative dentistry for lasting results.</p>
+                            <ul>
+                                <li>Top 1% of Invisalign providers in Europe</li>
+                                <li>Over 3,000 5-star reviews</li>
+                                <li>Free whitening & retainers included with treatments</li>
+                                <li>Price-match and flexible payment plans</li>
+                            </ul>
+                            <div style="margin-top: 20px"><button class="btn"><i class="fas fa-calendar-check"></i> Book Free Consultation</button></div>
+                        </div>
+                    </div>
+                    <h3 class="section-title">Services & Pricing</h3>
+                    <div class="cards">
+                        <article class="card" aria-labelledby="service-invis"><h4 id="service-invis">Invisalign Express</h4><p class="muted">A fast, cosmetic solution for mild misalignment. Includes 3D scans & retainers.</p><div class="price">£1,890</div><div class="small-list">Duration: 3–8 months • Up to 7 aligners • Free 3D scan, retainers & whitening</div><div style="margin-top: 20px"><button class="btn"><i class="fas fa-tooth"></i> Book Invisalign</button></div></article>
+                        <article class="card" aria-labelledby="service-impl"><h4 id="service-impl">Implants — Lite / Comprehensive</h4><p class="muted">Full teeth replacement and single-tooth implants using guided planning & premium materials.</p><div class="price">From £2,990</div><div class="small-list">Includes implants, abutments, final crowns & CBCT planning where required.</div><div style="margin-top: 20px"><button class="btn"><i class="fas fa-teeth"></i> Book Implants</button></div></article>
+                    </div>
+                    <div class="steps" aria-label="3 step action plan">
+                        <div class="step"><div class="step-number">1</div><h4>Consultation</h4><p class="muted">Comprehensive exam & bespoke smile design.</p></div>
+                        <div class="step"><div class="step-number">2</div><h4>Clincheck / Plan</h4><p class="muted">Digital smile design & surgery plan using scans and 3D models.</p></div>
+                        <div class="step"><div class="step-number">3</div><h4>Treatment</h4><p class="muted">Fitting of aligners or implant surgical placement and restoration.</p></div>
+                    </div>
+                    <h3 class="section-title">Our Patients — Before & After</h3>
+                    <div class="gallery" role="list">
+                        <div class="ba" role="listitem"><img src="assets/img7a.webp" alt="Before treatment"><img src="assets/img7b.webp" alt="After treatment"><div class="muted" style="margin-top: 8px">Invisalign — 6 months</div></div>
+                        <div class="ba" role="listitem"><img src="assets/img8a.webp" alt="Before treatment"><img src="assets/img8b.webp" alt="After treatment"><div class="muted" style="margin-top: 8px">Implant retained denture</div></div>
+                        <div class="ba" role="listitem"><img src="assets/img9a.webp" alt="Before treatment"><img src="assets/img9b.webp" alt="After treatment"><div class="muted" style="margin-top: 8px">Smile makeover</div></div>
+                    </div>
+                    <h3 class="section-title">What Our Patients Say</h3>
+                    <div class="testimonials" aria-live="polite">
+                        <div class="review"><h5><i class="fas fa-user-circle"></i> Google Review <span class="stars">★★★★★</span></h5><p class="muted">"Amazing service and great results. The team explained everything and I felt comfortable throughout."</p></div>
+                        <div class="review"><h5><i class="fas fa-user-circle"></i> Google Review <span class="stars">★★★★★</span></h5><p class="muted">"I had implants placed. Excellent care, quick recovery and the final crown looks natural."</p></div>
+                        <div class="review"><h5><i class="fas fa-user-circle"></i> Google Review <span class="stars">★★★★★</span></h5><p class="muted">"Invisalign transformed my smile — highly recommended."</p></div>
+                    </div>
+                    <div class="cta-section">
+                        <h3>Ready to Transform Your Smile?</h3>
+                        <p>Book your free, no-obligation consultation today and take the first step towards the smile you've always wanted.</p>
+                        <button class="btn cta-btn"><i class="fas fa-calendar-alt"></i> Book FREE Consultation</button>
+                    </div>
+                `;
+                
+                // Add interactivity to fallback content too
+                addInteractivity();
+            }
+        }
+
+        function addInteractivity() {
             // Add hover effects to cards
             const cards = document.querySelectorAll('.card, .step, .review, .ba');
             cards.forEach(card => {
                 card.addEventListener('mouseenter', function() {
                     this.style.transform = 'translateY(-10px)';
+                    this.style.transition = 'transform 0.3s ease';
                 });
                 card.addEventListener('mouseleave', function() {
                     this.style.transform = 'translateY(0)';
@@ -140,11 +196,13 @@
             const buttons = document.querySelectorAll('.btn');
             buttons.forEach(button => {
                 button.addEventListener('click', function() {
-                    // In a real implementation, this would open a booking modal
                     alert('Thank you for your interest! A booking form would open here.');
                 });
             });
-        });
+        }
+
+        // Load content when page loads
+        document.addEventListener('DOMContentLoaded', loadWhyUsContent);
     </script>
 </body>
 </html>

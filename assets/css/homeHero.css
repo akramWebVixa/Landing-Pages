@@ -15,7 +15,7 @@
         .hero {
             background: 
                 linear-gradient(180deg, rgba(6,12,14,0.85), rgba(6,12,14,0.7)),
-                url('assets/img1.jpg') center/cover no-repeat;
+                url('/assets/images/img1.jpg') center/cover no-repeat;
             padding: 40px 20px;
             min-height: 100vh;
             display: flex;

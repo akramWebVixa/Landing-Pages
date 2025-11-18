@@ -95,7 +95,7 @@ async function loadHeroContent() {
       heroForm.innerHTML = `
         <h3 id="book-title">${hero.form.title}</h3>
         <form action="https://api.web3forms.com/submit" method="POST" id="consultation-form">
-          <input type="hidden" name="access_key" value="e7421eec-026d-4b1b-be1f-8e9269d4e6fe">
+          <input type="hidden" name="access_key" value="23a48d7a-e35c-4ffc-93e9-aaad527163ed">
           <input type="hidden" name="subject" value="New Consultation Request from Banning Dental">
           <input type="hidden" name="from_name" value="Banning Dental Website">
           <input type="hidden" name="redirect" value="https://yourdomain.com/thank-you">
@@ -634,7 +634,6 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   await Promise.all([
     loadComponent("navbar", "comman/navbar.html"),
-    // loadComponent("footer", "comman/footer.html")
   ]);
 
   const initialPage = location.hash.replace("#", "") || "home";

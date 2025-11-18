@@ -99,18 +99,17 @@
         .field {
             display: flex;
             flex-direction: column;
-            margin-bottom: 16px;
+            margin-bottom: 6px;
         }
         
         .field label {
-            font-size: 14px;
-            margin-bottom: 6px;
+           padding: 7px 8px;
             opacity: 0.9;
             font-weight: 500;
         }
         
-        .field input {
-            padding: 14px 16px;
+        .field input  {
+            padding: 7px 8px;
             border-radius: 8px;
             border: 1px solid rgba(255, 255, 255, 0.2);
             background: rgba(255, 255, 255, 0.05);
@@ -119,7 +118,16 @@
             font-size: 16px;
             transition: all 0.3s ease;
         }
-        
+         .field textarea {
+           padding: 7px 8px;
+            border-radius: 8px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            background: rgba(255, 255, 255, 0.05);
+            color: #fff;
+            outline: none;
+            font-size: 14px;
+            transition: all 0.3s ease;
+         }
         .field input:focus {
             border-color: rgba(255, 255, 255, 0.4);
             background: rgba(255, 255, 255, 0.08);

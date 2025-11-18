@@ -175,9 +175,9 @@ function handleFormSubmission(e) {
   
   // Log all form data
   const formData = new FormData(form);
-  // for (let [key, value] of formData.entries()) {
-  //   console.log(`  ${key}: ${value}`);
-  // }
+  for (let [key, value] of formData.entries()) {
+    console.log(`  ${key}: ${value}`);
+  }
 
   // Show loading state
   const originalText = submitBtn.textContent;

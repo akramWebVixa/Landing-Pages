@@ -77,7 +77,7 @@
         // Fetch and populate hero content
         async function loadHeroContent() {
             try {
-                const response = await fetch('/clients/gardendental.json');
+                const response = await fetch('clients/gardendental.json');
                 const data = await response.json();
                 const heroData = data.homeHero;
                 
@@ -99,7 +99,7 @@
 
                     <aside class="hero-form">
                         <div class="form" aria-labelledby="book-title" style="color: white;">
-                            <h3 id="book-title">${heroData.form.title}</h3>
+                            <h3 id="book-title" >${heroData.form.title}</h3>
                             <form id="consultation-form">
                                 ${heroData.form.fields.map(field => `
                                     <div class="field">

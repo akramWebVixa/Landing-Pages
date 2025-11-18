@@ -10,7 +10,7 @@
 <body>
     <div class="container" id="why-us-content">
         <!-- Content will be populated by JavaScript -->
-        <div style="padding: 20px; text-align: center;">
+        <div style="padding: 20px; text-align: center; color: black;">
             <p>Loading content...</p>
         </div>
     </div>
@@ -19,7 +19,7 @@
         async function loadWhyUsContent() {
             try {
                 console.log('Starting to load JSON...');
-              const response = await fetch('/clients/gardendental.json')
+              const response = await fetch('clients/gardendental.json')
   .then(r => {
     console.log("STATUS:", r.status);
     return r.text();

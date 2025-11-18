@@ -634,7 +634,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   await Promise.all([
     loadComponent("navbar", "comman/navbar.html"),
-    loadComponent("footer", "comman/footer.html")
+    // loadComponent("footer", "comman/footer.html")
   ]);
 
   const initialPage = location.hash.replace("#", "") || "home";

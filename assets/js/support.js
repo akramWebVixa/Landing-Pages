@@ -188,7 +188,7 @@ function initConsultationForm() {
 }
 
 // ADD THIS: Your Google Sheets Web App URL
-const GOOGLE_SHEETS_WEBHOOK_URL = 'https://script.google.com/macros/s/AKfycbw201ZiojC3dKwpSMqDS7LiNveJ-Pj-eOXlrksDbYKaXdmkcJ7fJIWq-l4sz0947U4/exec';
+const GOOGLE_SHEETS_WEBHOOK_URL = 'https://script.google.com/macros/s/AKfycbyIWPlgvvceelFoC2T7vBN15XeePrTLmvRaUyplnE7d9l6M7bqxz1O1BHtI_Gi3LUA9/exec';
 
 async function handleFormSubmission(e) {
   e.preventDefault();

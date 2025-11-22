@@ -227,12 +227,14 @@ async function handleFormSubmission(e) {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({
-          name: formData.get('name'),
-          email: formData.get('email'),
-          phone: formData.get('phone'),
-          message: formData.get('message')
-        })
+       body: JSON.stringify({
+  FirstName: formData.get("FirstName"),
+  LastName: formData.get("LastName"),
+  Email: formData.get("Email"),
+  Phone: formData.get("Phone"),
+  Message: formData.get("Message")
+})
+
       })
     ]);
 

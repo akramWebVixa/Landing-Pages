@@ -222,6 +222,10 @@
         }
         
         @media (max-width: 768px) {
+                .feature-row .feature {
+        flex: 0 0 calc(50% - 20px) !important;
+        max-width: calc(50% - 20px);
+    }
             .hero {
                 padding: 30px 20px;
             }

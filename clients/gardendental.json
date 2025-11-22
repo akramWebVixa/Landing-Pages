@@ -1,4 +1,15 @@
 {
+  "clinicInfo": {
+    "name": "Graden Dental",
+    "tagline": "Invisalign & Implants",
+    "description": "Invisalign and implant specialists. Exceptional care & digital planning for outstanding results.",
+    "locations": "Warwick • Canning Town • London",
+    "address": "610 Finchley Road, NW11 7RX<br>Golders Green, London",
+    "addressExtra": "Parking available · Northern Line 3-min walk",
+    "phone": "020 8455 1234",
+    "email": "info@banningdental.com",
+    "hours": "Mon-Fri 8am-6pm, Sat 9am-2pm"
+  },
   "homeHero": {
     "title": "Get a confident new smile — Invisalign & Dental Implants",
     "description": "Expert clinicians, digital smile design and tailored treatment plans. Choose clear aligners for fast cosmetic results or dental implants for restored function and confidence.",

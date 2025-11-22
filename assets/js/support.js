@@ -1,24 +1,50 @@
 /* ===========================
    COMPONENT LOADING SYSTEM
 =========================== */
-
 async function loadComponent(selector, url) {
   const element = document.querySelector(selector);
   if (element) {
     try {
+      console.log(`Loading component: ${selector} from ${url}`);
       const response = await fetch(url);
       if (!response.ok) throw new Error(`Failed to load ${url}`);
       const html = await response.text();
       element.outerHTML = html;
       
+      console.log(`Component ${selector} loaded successfully`);
+      
       if (selector === "navbar") {
-        initNavbarDrawer();
+        console.log('Initializing navbar with dynamic data...');
+        await initNavbarWithDynamicData();
+      }
+      if (selector === "footer") {
+        console.log('Initializing footer with dynamic data...');
+        await initFooterWithDynamicData();
       }
     } catch (error) {
-      console.error(error);
+      console.error(`Error loading component ${selector}:`, error);
     }
+  } else {
+    console.warn(`Element for selector ${selector} not found`);
   }
 }
+// async function loadComponent(selector, url) {
+//   const element = document.querySelector(selector);
+//   if (element) {
+//     try {
+//       const response = await fetch(url);
+//       if (!response.ok) throw new Error(`Failed to load ${url}`);
+//       const html = await response.text();
+//       element.outerHTML = html;
+      
+//       if (selector === "navbar") {
+//         initNavbarDrawer();
+//       }
+//     } catch (error) {
+//       console.error(error);
+//     }
+//   }
+// }
 
 async function loadHomeComponents() {
   await Promise.all([
@@ -48,6 +74,28 @@ async function loadPage(page) {
     }
   }
 }
+/* ===========================
+   DYNAMIC CONTENT LOADING
+=========================== */
+
+let clinicData = null;
+
+async function loadClinicData() {
+  if (!clinicData) {
+    try {
+      console.log('Loading clinic data from JSON...');
+      const res = await fetch('clients/gardendental.json');
+      if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`);
+      clinicData = await res.json();
+      console.log('Clinic data loaded successfully:', clinicData);
+    } catch (error) {
+      console.error('Error loading clinic data:', error);
+      clinicData = {};
+    }
+  }
+  return clinicData;
+}
+
 
 /* ===========================
    DYNAMIC CONTENT LOADING
@@ -340,7 +388,133 @@ async function loadFindUsContent() {
     console.error('Find Us Load Error:', e);
   }
 }
+async function initNavbarWithDynamicData() {
+  try {
+    console.log('Starting navbar dynamic data initialization...');
+    const data = await loadClinicData();
+    const clinicInfo = data.clinicInfo;
+    
+    if (!clinicInfo) {
+      console.error('No clinicInfo found in data');
+      // Don't show anything if no data
+      return;
+    }
 
+    console.log('Updating navbar with clinic info:', clinicInfo);
+    
+    // Update desktop brand section
+    const brandDiv = document.querySelector('.brand .brand-text');
+    if (brandDiv && clinicInfo.name && clinicInfo.tagline) {
+      console.log('Found brand div, updating content...');
+      brandDiv.innerHTML = `
+        <div style="font-size:15px">${clinicInfo.name}</div>
+        <div style="font-size:12px;opacity:.85">${clinicInfo.tagline}</div>
+      `;
+      console.log('Brand div updated successfully');
+    }
+
+    // Update mobile drawer contact information
+    const mobileAddress = document.querySelector('.mobile-address');
+    if (mobileAddress && clinicInfo.phone) {
+      console.log('Found mobile address section, updating...');
+      mobileAddress.innerHTML = `
+        <h4>Contact Information</h4>
+        <p><strong>Phone:</strong> ${clinicInfo.phone}</p>
+        <p><strong>Email:</strong> ${clinicInfo.email || 'N/A'}</p>
+        <p><strong>Address:</strong> ${clinicInfo.address ? clinicInfo.address.replace('<br>', ', ') : 'N/A'}</p>
+        <p><strong>Hours:</strong> ${clinicInfo.hours || 'N/A'}</p>
+      `;
+      console.log('Mobile address updated successfully');
+    }
+
+    // Re-initialize navbar drawer functionality
+    console.log('Re-initializing navbar drawer...');
+    initNavbarDrawer();
+    console.log('Navbar dynamic data initialization complete');
+  } catch (error) {
+    console.error('Error initializing navbar with dynamic data:', error);
+    // Don't show any error to user, just fail silently
+  }
+}
+
+async function initFooterWithDynamicData() {
+  try {
+    console.log('Starting footer dynamic data initialization...');
+    const data = await loadClinicData();
+    const clinicInfo = data.clinicInfo;
+    
+    if (!clinicInfo) {
+      console.error('No clinicInfo found in data');
+      // Don't show anything if no data
+      return;
+    }
+
+    console.log('Updating footer with clinic info:', clinicInfo);
+
+    // Update footer clinic info - only if we have data
+    const footerClinicInfo = document.querySelector('.footer-col.clinic-info');
+    if (footerClinicInfo && clinicInfo.name) {
+      console.log('Found clinic info footer column, updating...');
+      footerClinicInfo.innerHTML = `
+        <h4>${clinicInfo.name}</h4>
+        ${clinicInfo.description ? `<p class="muted" style="max-width:28ch">${clinicInfo.description}</p>` : ''}
+        ${clinicInfo.locations ? `<p style="margin-top:12px;font-size:14px">${clinicInfo.locations}</p>` : ''}
+        <div class="social-links">
+          <a href="#"><i class="fab fa-facebook-f"></i></a>
+          <a href="#"><i class="fab fa-twitter"></i></a>
+          <a href="#"><i class="fab fa-linkedin-in"></i></a>
+          <a href="#"><i class="fab fa-youtube"></i></a>
+        </div>
+      `;
+      console.log('Clinic info footer column updated');
+    }
+
+    // Update footer visit us section - only if we have data
+    const footerVisitUs = document.querySelector('.footer-col.visit-info');
+    if (footerVisitUs && clinicInfo.address) {
+      console.log('Found visit info footer column, updating...');
+      let visitContent = `<h2 id="visit">Visit us</h2>`;
+      
+      if (clinicInfo.address) {
+        visitContent += `<p>${clinicInfo.address}</p>`;
+      }
+      
+      if (clinicInfo.addressExtra) {
+        visitContent += `<p class="muted">${clinicInfo.addressExtra}</p>`;
+      }
+      
+      if (clinicInfo.phone || clinicInfo.email) {
+        visitContent += `<div style="margin-top: 20px;">`;
+        if (clinicInfo.phone) {
+          visitContent += `<p class="muted"><i class="fas fa-phone"></i> ${clinicInfo.phone}</p>`;
+        }
+        if (clinicInfo.email) {
+          visitContent += `<p class="muted"><i class="fas fa-envelope"></i> ${clinicInfo.email}</p>`;
+        }
+        visitContent += `</div>`;
+      }
+      
+      footerVisitUs.innerHTML = visitContent;
+      console.log('Visit info footer column updated');
+    }
+
+    // Update footer bottom - only if we have data
+    const footerBottom = document.querySelector('.footer-bottom');
+    if (footerBottom && clinicInfo.name) {
+      console.log('Found footer bottom, updating...');
+      footerBottom.innerHTML = `<p>&copy; 2025 ${clinicInfo.name}. All rights reserved. | Privacy Policy | Terms of Service</p>`;
+      console.log('Footer bottom updated');
+    }
+
+    // Re-attach footer event listeners
+    console.log('Initializing footer event listeners...');
+    initFooterEventListeners();
+    console.log('Footer dynamic data initialization complete');
+  } catch (error) {
+    console.error('Error initializing footer with dynamic data:', error);
+    // Don't show any error to user, just fail silently
+  }
+}
 /* ===========================
    UI COMPONENTS INITIALIZATION
 =========================== */
@@ -628,26 +802,41 @@ function handleHashNavigation() {
 =========================== */
 
 document.addEventListener("DOMContentLoaded", async () => {
+  console.log('DOM Content Loaded - Starting application initialization');
+  
   if (!document.querySelector("main")) {
     document.body.insertAdjacentHTML("beforeend", "<main></main>");
   }
 
+  // Pre-load clinic data first
+  console.log('Pre-loading clinic data...');
+  await loadClinicData();
+
+  // Load navbar and footer components
+  console.log('Loading navbar and footer components...');
   await Promise.all([
     loadComponent("navbar", "comman/navbar.html"),
+    loadComponent("footer", "comman/footer.html")
   ]);
 
+  // Load initial page
   const initialPage = location.hash.replace("#", "") || "home";
+  console.log(`Loading initial page: ${initialPage}`);
   await loadPage(initialPage);
 
+  console.log('Initializing smooth scrolling and hash navigation...');
   initEnhancedSmoothScrolling(); 
   handleHashNavigation();
 
   window.addEventListener("hashchange", async () => {
     const page = location.hash.replace("#", "") || "home";
+    console.log(`Hash changed, loading page: ${page}`);
     await loadPage(page);
     setTimeout(() => {
       initEnhancedSmoothScrolling(); 
       handleHashNavigation();
     }, 100);
   });
+
+  console.log('Application initialization complete');
 });

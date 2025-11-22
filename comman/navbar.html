@@ -4,21 +4,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Navbar</title>
-     <link rel="stylesheet" href="assets/css/navbar.css">
-
+    <link rel="stylesheet" href="assets/css/navbar.css">
 </head>
 <body>
     <div class="navbar-container">
         <div class="topbar">
             <div class="brand">
                 <div class="logo">N</div>
-                <div>
-                    <div style="font-size:15px">NUVO • Banning Dental Clinic</div>
-                    <div style="font-size:12px;opacity:.85">Invisalign & Implants</div>
+                <div class="brand-text">
+                    <!-- Dynamic content will be inserted here -->
+                    <!-- Empty by default -->
                 </div>
             </div>
             <div class="top-actions desktop-only">
-                <!-- <button class="btn-outline">Contact Us</button> -->
                 <button class="btn">Book Free Consultation</button>
             </div>
             <button class="mobile-menu-btn" id="menu-btn">
@@ -41,43 +39,13 @@
             <div class="drawer-body">
                 <div class="mobile-actions">
                     <button class="btn">Book Free Consultation</button>
-                    <!-- <button class="btn-outline">Contact Us</button> -->
                 </div>
                 <div class="mobile-address">
-                    <h4>Contact Information</h4>
-                    <p><strong>Phone:</strong> (555) 123-4567</p>
-                    <p><strong>Email:</strong> info@nuvodental.com</p>
-                    <p><strong>Address:</strong> 123 Dental Street, Banning, CA 92220</p>
-                    <p><strong>Hours:</strong> Mon-Fri 8am-6pm, Sat 9am-2pm</p>
+                    <!-- Dynamic content will be inserted here -->
+                    <!-- Empty by default -->
                 </div>
             </div>
         </div>
     </div>
-
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const menuBtn = document.getElementById('menu-btn');
-            const closeBtn = document.getElementById('close-btn');
-            const mobileDrawer = document.getElementById('mobile-drawer');
-            
-            menuBtn.addEventListener('click', function() {
-                mobileDrawer.classList.add('open');
-                menuBtn.classList.add('active');
-            });
-            
-            closeBtn.addEventListener('click', function() {
-                mobileDrawer.classList.remove('open');
-                menuBtn.classList.remove('active');
-            });
-            
-            // Close drawer when clicking outside
-            mobileDrawer.addEventListener('click', function(e) {
-                if (e.target === mobileDrawer) {
-                    mobileDrawer.classList.remove('open');
-                    menuBtn.classList.remove('active');
-                }
-            });
-        });
-    </script>
 </body>
 </html>

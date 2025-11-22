@@ -5,20 +5,16 @@ async function loadComponent(selector, url) {
   const element = document.querySelector(selector);
   if (element) {
     try {
-      console.log(`Loading component: ${selector} from ${url}`);
       const response = await fetch(url);
       if (!response.ok) throw new Error(`Failed to load ${url}`);
       const html = await response.text();
       element.outerHTML = html;
       
-      console.log(`Component ${selector} loaded successfully`);
       
       if (selector === "navbar") {
-        console.log('Initializing navbar with dynamic data...');
         await initNavbarWithDynamicData();
       }
       if (selector === "footer") {
-        console.log('Initializing footer with dynamic data...');
         await initFooterWithDynamicData();
       }
     } catch (error) {
@@ -67,11 +63,9 @@ let clinicData = null;
 async function loadClinicData() {
   if (!clinicData) {
     try {
-      console.log('Loading clinic data from JSON...');
       const res = await fetch('clients/gardendental.json');
       if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`);
       clinicData = await res.json();
-      console.log('Clinic data loaded successfully:', clinicData);
     } catch (error) {
       console.error('Error loading clinic data:', error);
       clinicData = {};
@@ -250,7 +244,6 @@ async function handleFormSubmission(e) {
         
         // Log Sheets response status (but don't block success)
         if (sheetsResponse.status === 'fulfilled') {
-          console.log('✅ Data also saved to Google Sheets');
         } else {
           console.warn('⚠️ Email sent but Sheets save failed:', sheetsResponse.reason);
         }
@@ -396,7 +389,6 @@ async function loadFindUsContent() {
 
 async function initNavbarWithDynamicData() {
   try {
-    console.log('Starting navbar dynamic data initialization...');
     const data = await loadClinicData();
     const clinicInfo = data.clinicInfo;
     
@@ -405,23 +397,19 @@ async function initNavbarWithDynamicData() {
       return;
     }
 
-    console.log('Updating navbar with clinic info:', clinicInfo);
     
     // Update desktop brand section
     const brandDiv = document.querySelector('.brand .brand-text');
     if (brandDiv && clinicInfo.name && clinicInfo.tagline) {
-      console.log('Found brand div, updating content...');
       brandDiv.innerHTML = `
         <div style="font-size:15px">${clinicInfo.name}</div>
         <div style="font-size:12px;opacity:.85">${clinicInfo.tagline}</div>
       `;
-      console.log('Brand div updated successfully');
     }
 
     // Update mobile drawer contact information
     const mobileAddress = document.querySelector('.mobile-address');
     if (mobileAddress && clinicInfo.phone) {
-      console.log('Found mobile address section, updating...');
       mobileAddress.innerHTML = `
         <h4>Contact Information</h4>
         <p><strong>Phone:</strong> ${clinicInfo.phone}</p>
@@ -429,13 +417,10 @@ async function initNavbarWithDynamicData() {
         <p><strong>Address:</strong> ${clinicInfo.address ? clinicInfo.address.replace('<br>', ', ') : 'N/A'}</p>
         <p><strong>Hours:</strong> ${clinicInfo.hours || 'N/A'}</p>
       `;
-      console.log('Mobile address updated successfully');
     }
 
     // Re-initialize navbar drawer functionality
-    console.log('Re-initializing navbar drawer...');
     initNavbarDrawer();
-    console.log('Navbar dynamic data initialization complete');
   } catch (error) {
     console.error('Error initializing navbar with dynamic data:', error);
   }
@@ -443,7 +428,6 @@ async function initNavbarWithDynamicData() {
 
 async function initFooterWithDynamicData() {
   try {
-    console.log('Starting footer dynamic data initialization...');
     const data = await loadClinicData();
     const clinicInfo = data.clinicInfo;
     
@@ -452,12 +436,10 @@ async function initFooterWithDynamicData() {
       return;
     }
 
-    console.log('Updating footer with clinic info:', clinicInfo);
 
     // Update footer clinic info
     const footerClinicInfo = document.querySelector('.footer-col.clinic-info');
     if (footerClinicInfo && clinicInfo.name) {
-      console.log('Found clinic info footer column, updating...');
       footerClinicInfo.innerHTML = `
         <h4>${clinicInfo.name}</h4>
         ${clinicInfo.description ? `<p class="muted" style="max-width:28ch">${clinicInfo.description}</p>` : ''}
@@ -469,13 +451,11 @@ async function initFooterWithDynamicData() {
           <a href="#"><i class="fab fa-youtube"></i></a>
         </div>
       `;
-      console.log('Clinic info footer column updated');
     }
 
     // Update footer visit us section
     const footerVisitUs = document.querySelector('.footer-col.visit-info');
     if (footerVisitUs && clinicInfo.address) {
-      console.log('Found visit info footer column, updating...');
       let visitContent = `<h2 id="visit">Visit us</h2>`;
       
       if (clinicInfo.address) {

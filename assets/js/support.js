@@ -270,57 +270,51 @@ function initConsultationForm() {
 }
 
 // ADD THIS: Your Google Sheets Web App URL
-const GOOGLE_SHEETS_WEBHOOK_URL = 'https://script.google.com/macros/s/AKfycbzkJe0cNM-UZCn8i5lkCHPRTcUnkDBIXFv5XNtrIs_cI2nuX2v4VmN8Awv_5JKZUU_6/exec';
+const GOOGLE_SHEETS_WEBHOOK_URL = 'https://script.google.com/macros/s/AKfycbziMKd6spj2hCCWUh8EilpXgbB3qaPg5OOY1rZp8UjmTgc7mUcDlxmdxhEQikWRDqWy/exec';
 
 async function handleFormSubmission(e) {
   e.preventDefault();
-  
+
   const form = document.getElementById('consultation-form');
   const submitBtn = document.getElementById('submit-btn');
-  
+
   if (!form || !submitBtn) {
     console.error('❌ Form or submit button not found');
     return;
   }
 
-  // Log all form data
   const formData = new FormData(form);
-  
-  // Show loading state
+
   const originalText = submitBtn.textContent;
   submitBtn.textContent = 'Sending...';
   submitBtn.disabled = true;
 
   try {
-    // Send to both services in parallel for better performance
     const [web3formsResponse, sheetsResponse] = await Promise.allSettled([
-      // 1️⃣ Send email via Web3Forms (original functionality)
+      // 1️⃣ Email through Web3Forms
       fetch(form.action, {
         method: 'POST',
         body: formData,
-        headers: {
-          'Accept': 'application/json'
-        }
+        headers: { 'Accept': 'application/json' }
       }),
-      
-      // 2️⃣ NEW: Save to Google Sheets for data backup
-      fetch(GOOGLE_SHEETS_WEBHOOK_URL, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-       body: JSON.stringify({
-  FirstName: formData.get("FirstName"),
-  LastName: formData.get("LastName"),
-  Email: formData.get("Email"),
-  Phone: formData.get("Phone"),
-  Message: formData.get("Message")
-})
 
-      })
+      // 2️⃣ Save to Google Sheets
+      (async () => {
+        const sheetData = new URLSearchParams();
+        sheetData.append("FirstName", formData.get("FirstName"));
+        sheetData.append("LastName", formData.get("LastName"));
+        sheetData.append("Email", formData.get("Email"));
+        sheetData.append("Phone", formData.get("Phone"));
+        sheetData.append("Message", formData.get("Message"));
+
+        return await fetch(GOOGLE_SHEETS_WEBHOOK_URL, {
+          method: "POST",
+          body: sheetData   // 🚀 No headers → No CORS issues
+        });
+      })()
     ]);
 
-    // Check Web3Forms response (email)
+    // Web3 Forms result
     if (web3formsResponse.status === 'fulfilled') {
       const result = await web3formsResponse.value.json();
       if (result.success) {
@@ -329,30 +323,105 @@ async function handleFormSubmission(e) {
           successMessage.style.display = 'block';
           form.style.display = 'none';
         }
-        
-        // Log Sheets response status (but don't block success)
-        if (sheetsResponse.status === 'fulfilled') {
-        } else {
-          console.warn('⚠️ Email sent but Sheets save failed:', sheetsResponse.reason);
-        }
       } else {
-        console.error('❌ Web3Forms submission failed:', result);
         alert('Form submission failed. Please try again.');
       }
     } else {
-      console.error('❌ Web3Forms network error:', web3formsResponse.reason);
-      alert('Network error. Please check your connection and try again.');
+      alert('Network error. Please check your connection.');
     }
 
   } catch (error) {
-    console.error('❌ Form submission error:', error);
-    alert('An unexpected error occurred. Please try again.');
+    console.error('❌ Submission error:', error);
+    alert('Unexpected error. Please try again.');
   } finally {
-    // Reset button state
     submitBtn.textContent = originalText;
     submitBtn.disabled = false;
   }
 }
+
+
+// async function handleFormSubmission(e) {
+//   e.preventDefault();
+  
+//   const form = document.getElementById('consultation-form');
+//   const submitBtn = document.getElementById('submit-btn');
+  
+//   if (!form || !submitBtn) {
+//     console.error('❌ Form or submit button not found');
+//     return;
+//   }
+
+//   // Log all form data
+//   const formData = new FormData(form);
+  
+//   // Show loading state
+//   const originalText = submitBtn.textContent;
+//   submitBtn.textContent = 'Sending...';
+//   submitBtn.disabled = true;
+
+//   try {
+//     // Send to both services in parallel for better performance
+//     const [web3formsResponse, sheetsResponse] = await Promise.allSettled([
+//       // 1️⃣ Send email via Web3Forms (original functionality)
+//       fetch(form.action, {
+//         method: 'POST',
+//         body: formData,
+//         headers: {
+//           'Accept': 'application/json'
+//         }
+//       }),
+      
+//       // 2️⃣ NEW: Save to Google Sheets for data backup
+      
+//       fetch(GOOGLE_SHEETS_WEBHOOK_URL, {
+//         method: 'POST',
+//         headers: {
+//           'Content-Type': 'application/json',
+//         },
+//        body: JSON.stringify({
+//   FirstName: formData.get("FirstName"),
+//   LastName: formData.get("LastName"),
+//   Email: formData.get("Email"),
+//   Phone: formData.get("Phone"),
+//   Message: formData.get("Message")
+// })
+
+//       })
+//     ]);
+
+//     // Check Web3Forms response (email)
+//     if (web3formsResponse.status === 'fulfilled') {
+//       const result = await web3formsResponse.value.json();
+//       if (result.success) {
+//         const successMessage = document.getElementById('success-message');
+//         if (successMessage) {
+//           successMessage.style.display = 'block';
+//           form.style.display = 'none';
+//         }
+        
+//         // Log Sheets response status (but don't block success)
+//         if (sheetsResponse.status === 'fulfilled') {
+//         } else {
+//           console.warn('⚠️ Email sent but Sheets save failed:', sheetsResponse.reason);
+//         }
+//       } else {
+//         console.error('❌ Web3Forms submission failed:', result);
+//         alert('Form submission failed. Please try again.');
+//       }
+//     } else {
+//       console.error('❌ Web3Forms network error:', web3formsResponse.reason);
+//       alert('Network error. Please check your connection and try again.');
+//     }
+
+//   } catch (error) {
+//     console.error('❌ Form submission error:', error);
+//     alert('An unexpected error occurred. Please try again.');
+//   } finally {
+//     // Reset button state
+//     submitBtn.textContent = originalText;
+//     submitBtn.disabled = false;
+//   }
+// }
 
 async function loadWhyUsContent() {
   try {
@@ -775,6 +844,9 @@ function initEnhancedSmoothScrolling() {
     // DO NOT preventDefault → hash will change → page will load
     return;
 }
+   if (target.closest('a[href*="services"]'))  {
+    return;
+    }
   // scrolling yes
     if (target.closest('a[href*="about"]') || 
     

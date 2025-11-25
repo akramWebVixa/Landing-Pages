@@ -39,7 +39,7 @@
             <aside class="hero-form">
                 <div class="form" aria-labelledby="book-title">
                     <h3 id="book-title">Book Your FREE Consultation</h3>
-                    <form id="consultation-form">
+                    <!-- <form id="consultation-form">
                         <div class="field">
                             <label for="firstname">First Name</label>
                             <input id="firstname" name="FirstName" type="text" placeholder="Your first name" required>
@@ -64,7 +64,7 @@
                         <div class="cta">
                             <button class="btn" type="submit">BOOK FREE CONSULTATION</button>
                         </div>
-                    </form>
+                    </form> -->
                     <div class="success-message" id="success-message">
                         <h3>Thank You!</h3>
                         <p>We've received your information and will contact you shortly to schedule your free consultation.</p>
@@ -105,7 +105,15 @@
                                 ${heroData.form.fields.map(field => `
                                     <div class="field">
                                         <label for="${field.id}">${field.label}</label>
-                                        <input id="${field.id}" name="${field.id}" type="${field.type}" placeholder="${field.placeholder}" ${field.required ? 'required' : ''}>
+                                        <input id="${field.id}" name="${
+ field.id === 'firstname' ? 'FirstName' :
+ field.id === 'lastname' ? 'LastName' :
+ field.id === 'email' ? 'Email' :
+ field.id === 'phone' ? 'Phone' :
+ field.id === 'message' ? 'Message' :
+ field.id
+}"
+ type="${field.type}" placeholder="${field.placeholder}" ${field.required ? 'required' : ''}>
                                     </div>
                                 `).join('')}
                                 <div class="cta">

@@ -329,6 +329,12 @@ async function handleFormSubmission(e) {
     } else {
       alert('Network error. Please check your connection.');
     }
+console.log("DEBUG FIELDS:");
+console.log("FirstName =", formData.get("FirstName"));
+console.log("LastName =", formData.get("LastName"));
+console.log("Phone =", formData.get("Phone"));
+console.log("Email =", formData.get("Email"));
+console.log("Message =", formData.get("Message"));
 
   } catch (error) {
     console.error('❌ Submission error:', error);

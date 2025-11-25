@@ -7,13 +7,61 @@
     <link rel="stylesheet" href="assets/css/navbar.css">
 </head>
 <body>
+
     <div class="navbar-container">
+    <div class="topbar">
+        <div class="brand">
+            <div class="logo">N</div>
+            <div class="brand-text"></div>
+        </div>
+
+        <nav class="desktop-menu desktop-only">
+            <a href="#home" class="nav-link">Home</a>
+            <a href="#about" class="nav-link">About Us</a>
+        </nav>
+
+        <div class="top-actions desktop-only">
+            <button class="btn">Book Free Consultation</button>
+        </div>
+
+        <button class="mobile-menu-btn" id="menu-btn">
+            <span></span><span></span><span></span>
+        </button>
+    </div>
+</div>
+
+<!-- Mobile Drawer -->
+<div class="mobile-drawer" id="mobile-drawer">
+    <div class="drawer-content">
+        <div class="drawer-header">
+            <h3>Menu</h3>
+            <button class="close-btn" id="close-btn"><span>&times;</span></button>
+        </div>
+
+        <div class="drawer-body">
+
+            <!-- MOBILE MENU -->
+          <nav class="mobile-menu">
+    <a href="#home" class="mobile-link">Home</a>
+    <a href="#about" class="mobile-link">About Us</a>
+</nav>
+
+
+            <div class="mobile-actions">
+                <button class="btn">Book Free Consultation</button>
+            </div>
+
+            <div class="mobile-address"></div>
+        </div>
+    </div>
+</div>
+
+    <!-- <div class="navbar-container">
         <div class="topbar">
             <div class="brand">
                 <div class="logo">N</div>
                 <div class="brand-text">
-                    <!-- Dynamic content will be inserted here -->
-                    <!-- Empty by default -->
+              
                 </div>
             </div>
             <div class="top-actions desktop-only">
@@ -25,10 +73,9 @@
                 <span></span>
             </button>
         </div>
-    </div>
+    </div> -->
 
-    <!-- Mobile Drawer -->
-    <div class="mobile-drawer" id="mobile-drawer">
+    <!-- <div class="mobile-drawer" id="mobile-drawer">
         <div class="drawer-content">
             <div class="drawer-header">
                 <h3>Menu</h3>
@@ -41,11 +88,10 @@
                     <button class="btn">Book Free Consultation</button>
                 </div>
                 <div class="mobile-address">
-                    <!-- Dynamic content will be inserted here -->
-                    <!-- Empty by default -->
+                 
                 </div>
             </div>
         </div>
-    </div>
+    </div> -->
 </body>
 </html>

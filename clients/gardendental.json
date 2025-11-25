@@ -192,5 +192,56 @@
     "address": "123 Dental Street, Warwick, CV32 4AB",
     "extraInfo": "Free parking available at the rear of the building",
     "mapEmbedUrl": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2442.123456789012!2d-1.590000!3d52.280000!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x48774c7f8d1f87a5%3A0x123456789abcdef!2sWarwick!5e0!3m2!1sen!2suk!4v1234567890"
+  },
+  "aboutPage": {
+  "title": "About Graden Dental",
+  "heroImage": "assets/images/img3.jpg",
+  "intro": "We are a modern dental clinic specialising in Invisalign, dental implants and smile makeovers. Our experienced clinicians use digital planning and advanced technologies to deliver exceptional care.",
+  
+  "missionTitle": "Our Mission",
+  "missionText": "To provide world-class dental treatment with compassion, transparency and advanced technology — giving every patient the confident smile they deserve.",
+
+  "valuesTitle": "Our Values",
+  "values": [
+    "Patient-first approach",
+    "Ethical & transparent treatment planning",
+    "Use of advanced digital dentistry",
+    "Comfort-focused care with sedation options",
+    "Long-term oral health focus"
+  ],
+
+  "specialtiesTitle": "Our Specialties",
+  "specialties": [
+    {
+      "title": "Invisalign",
+      "description": "Clear aligners with 3D smile design for precise, fast and comfortable results."
+    },
+    {
+      "title": "Dental Implants",
+      "description": "Advanced implant planning, guided surgery & premium-quality restorations."
+    },
+    {
+      "title": "Cosmetic Dentistry",
+      "description": "Smile makeovers, whitening, cosmetic bonding & veneers."
+    }
+  ],
+
+  "teamTitle": "Meet Our Team",
+"team": [
+  {
+    "name": "Dr. Sarah Thompson",
+    "role": "Lead Invisalign Specialist",
+    "experience": "15+ Years Experience",
+    "image": "assets/images/img3.jpg"
+  },
+  {
+    "name": "Dr. Mark Johnson",
+    "role": "Implant Surgeon",
+    "experience": "2000+ Successful Implants",
+    "image": "assets/images/img3.jpg"
   }
+]
+
+}
+
 }

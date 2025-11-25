@@ -52,6 +52,7 @@
         },
         {
           "id": "phone",
+            "name": "Phone",
           "label": "Phone Number",
           "type": "tel",
           "placeholder": "Phone number",
